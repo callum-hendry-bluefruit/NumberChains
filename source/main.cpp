@@ -1,14 +1,18 @@
-#include <iostream>
-#include <string>
+#include "NumberChains.h"
 
 using namespace ::std;
 
 int main()
 {
-	string s;
+	int input_int = 0;
+	cin >> input_int;
 
-	cout << "Hello World!";
+	NumberChain MainChain;
 
-	cin >> s;
+	MainChain.MultipleSubtractions(input_int);
+
+	char pause;
+	cin >> pause;
+
 	return 0;
 }

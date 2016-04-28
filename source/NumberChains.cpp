@@ -1,18 +1,13 @@
 #include "NumberChains.h"
 
-void NumberChain::TakeAndParseInput()
+void NumberChain::TakeAndParseInput(int input_int)
 {
-
+	BreakDownInt(input_int);
 }
 
 int NumberChain::GetValueInPreviousNumbers(int vector_element)
 {
 	return m_previous_numbers[vector_element];
-}
-
-void NumberChain::mock_SetSortedNumbers(std::vector<int> mock_numbers)
-{
-	m_sorted_numbers = mock_numbers;
 }
 
 void NumberChain::ArrangeDecending()
@@ -61,24 +56,26 @@ void NumberChain::SubtractAscendingFromDecending()
 	m_after_subtraction = decending_merged - ascending_merged;
 }
 
-void NumberChain::BreakDownInt()
+void NumberChain::BreakDownInt(int int_to_break)
 {
 	int digit;
 	m_sorted_numbers.clear();
 
-	while (m_after_subtraction > 0)
+	while (int_to_break > 0)
 	{
-		digit = m_after_subtraction % 10;
-		m_after_subtraction = m_after_subtraction / 10;
+		digit = int_to_break % 10;
+		int_to_break = int_to_break / 10;
 		m_sorted_numbers.push_back(digit);
 	}
 }
 
-void NumberChain::MultipleSubtractions()
+void NumberChain::MultipleSubtractions(int input_int)
 {
+	TakeAndParseInput(input_int);
+
 	SubtractAscendingFromDecending();
 	m_previous_numbers.push_back(m_after_subtraction);
-	BreakDownInt();
+	BreakDownInt(m_after_subtraction);
 
 	bool stop_subtraction = false;
 
@@ -99,6 +96,15 @@ void NumberChain::MultipleSubtractions()
 		{
 			m_previous_numbers.push_back(m_after_subtraction);
 		}
-		BreakDownInt();
+		BreakDownInt(m_after_subtraction);
+	}
+	PrintOutNumbers();
+}
+
+void NumberChain::PrintOutNumbers()
+{
+	for (size_t i = 0; i < m_previous_numbers.size(); i++)
+	{
+		std::cout << m_previous_numbers[i] << "\n";
 	}
 }

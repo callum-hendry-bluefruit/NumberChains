@@ -7,10 +7,7 @@ TEST(testChain, subtract_ascending_from_decending_multiple_times_until_a_number_
 {
 	NumberChain MultipleSubtraction;
 
-	std::vector<int> mock_numbers = { 1, 9, 5, 7, 6, 3, 4, 8, 2 };
-	MultipleSubtraction.mock_SetSortedNumbers(mock_numbers);
-
-	MultipleSubtraction.MultipleSubtractions();
+	MultipleSubtraction.MultipleSubtractions(195763482);
 
 	std::vector<int> expected_result = { 864197532 };
 	EXPECT_EQ(expected_result[0], MultipleSubtraction.GetValueInPreviousNumbers(0));
@@ -20,10 +17,7 @@ TEST(testChain, multiple_subtractions_with_different_number)
 {
 	NumberChain MultipleSubtraction;
 
-	std::vector<int> mock_numbers = { 1, 2, 3, 4 };
-	MultipleSubtraction.mock_SetSortedNumbers(mock_numbers);
-
-	MultipleSubtraction.MultipleSubtractions();
+	MultipleSubtraction.MultipleSubtractions(1234);
 
 	std::vector<int> expected_result = { 3087, 8352, 6174};
 	EXPECT_EQ(expected_result[0], MultipleSubtraction.GetValueInPreviousNumbers(0));
