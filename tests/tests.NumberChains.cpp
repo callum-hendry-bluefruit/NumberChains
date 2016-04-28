@@ -3,47 +3,30 @@
 #include <cassert>
 #include <iostream>
 
-TEST(testChain, arrange_digits_in_decending_order)
+TEST(testChain, subtract_ascending_from_decending_multiple_times_until_a_number_is_repeated)
 {
-	NumberChain decendingOrder;
+	NumberChain MultipleSubtraction;
 
-	decendingOrder.m_sorted_numbers = { 1, 9, 5, 7, 6, 3, 4, 8, 2 };
+	std::vector<int> mock_numbers = { 1, 9, 5, 7, 6, 3, 4, 8, 2 };
+	MultipleSubtraction.mock_SetSortedNumbers(mock_numbers);
 
-	decendingOrder.ArrangeDecending();
+	MultipleSubtraction.MultipleSubtractions();
 
-	std::vector<int> expected_result = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-
-	EXPECT_EQ(expected_result, decendingOrder.m_sorted_numbers);
+	std::vector<int> expected_result = { 864197532 };
+	EXPECT_EQ(expected_result[0], MultipleSubtraction.GetValueInPreviousNumbers(0));
 }
 
-TEST(testChain, arrange_digits_in_ascending_order)
+TEST(testChain, multiple_subtractions_with_different_number)
 {
-	NumberChain ascendingOrder;
+	NumberChain MultipleSubtraction;
 
-	ascendingOrder.m_sorted_numbers = { 1, 9, 5, 7, 6, 3, 4, 8, 2 };
+	std::vector<int> mock_numbers = { 1, 2, 3, 4 };
+	MultipleSubtraction.mock_SetSortedNumbers(mock_numbers);
 
-	ascendingOrder.ArrangeAscending();
+	MultipleSubtraction.MultipleSubtractions();
 
-	std::vector<int> expected_result = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-	EXPECT_EQ(expected_result, ascendingOrder.m_sorted_numbers);
-}
-
-TEST(testChain, merge_elements_from_vector)
-{
-	NumberChain mergingElements;
-
-	mergingElements.m_sorted_numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-	int expected_result = 123456789;
-
-	EXPECT_EQ(expected_result, mergingElements.MergeVectorElements());
-}
-
-TEST(testChain, subtract_decending_from_ascending)
-{
-	//subtracting the number obtained in(2) from the number
-	//obtained(1) to form a new number
-
-	
+	std::vector<int> expected_result = { 3087, 8352, 6174};
+	EXPECT_EQ(expected_result[0], MultipleSubtraction.GetValueInPreviousNumbers(0));
+	EXPECT_EQ(expected_result[1], MultipleSubtraction.GetValueInPreviousNumbers(1));
+	EXPECT_EQ(expected_result[2], MultipleSubtraction.GetValueInPreviousNumbers(2));
 }
